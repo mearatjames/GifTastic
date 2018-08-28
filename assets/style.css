@@ -3,7 +3,6 @@
 }
 
 .closebtn {
-    padding-left: 30px;
     font-weight: bold;
     font-size: 20px;
     cursor: pointer;
@@ -11,4 +10,9 @@
 
 .closebtn:hover {
     color: #000;
+}
+
+.searchvalue {
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

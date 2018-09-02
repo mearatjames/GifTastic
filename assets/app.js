@@ -5,7 +5,6 @@ $.ajax({
     url: queryURL,
     method: "GET"
   }).then(function(response) {
-      console.log(response)
       let a = response.data
     for (let i = 0; i < 10; i++) {
         title = a[i].title.split(" GIF")
@@ -18,12 +17,13 @@ $.ajax({
                 <p class="card-text">Rating: ${a[i].rating.toUpperCase()}</p>
                 </div>
                 <div class="col-sm-1 addFav">
-                <button type="button" class="btn btn-secondary btn-sm">+</button>
+                <button type="button" data-toggle="tooltip" title="Add to favorite" class="btn btn-secondary btn-sm">+</button>
                 </div>
             </div>
         </div>
         `)
     }
+    $('[data-toggle="tooltip"]').tooltip()
   });
 }
 
@@ -33,7 +33,6 @@ let favArr = [];
 
 //Document Ready
 $(function() {
-
     $('#viewMore').hide()
 //Search and add function
 $('#searchAdd').on('click', function() {

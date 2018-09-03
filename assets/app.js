@@ -140,7 +140,6 @@ $(document).on('click', '.rmvFav', function() {
     let imageLink = $(this).parent().siblings().attr('data-image')
     let rmvIndex = (favArr.map(function(gif) {return gif.imageLink }).indexOf(imageLink))
     favArr.splice(rmvIndex, 1)
-    console.log(favArr)
     localStorage.setItem("favArr", JSON.stringify(favArr));
     viewFav()
 })

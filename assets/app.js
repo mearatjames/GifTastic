@@ -23,7 +23,7 @@ $.ajax({
         </div>
         `)
     }
-    $('[data-toggle="tooltip"]').tooltip()
+    $('[data-toggle="tooltip"]').tooltip({ trigger: 'hover' })
   });
 }
 
@@ -34,6 +34,7 @@ let favArr = [];
 //Document Ready
 $(function() {
     $('#viewMore').hide()
+    $('[data-toggle="tooltip"]').tooltip()
 //Search and add function
 $('#searchAdd').on('click', function() {
     event.preventDefault();
@@ -72,11 +73,13 @@ function closeBtn() {
 closeBtn()
 })
 
+//View more GIFs function
 $(document).on('click', '#viewMore', function() {
     page += 10;
     giphy(searchString, page)
 })
 
+//Add to favorite function
 $(document).on('click', '.addFav', function() {
     let favObj = {
         imageLink: $(this).parent().siblings().attr('data-image'),
@@ -89,8 +92,10 @@ $(document).on('click', '.addFav', function() {
     }).indexOf(favObj.imageLink) == -1) {
         favArr.push(favObj)
     }
+    localStorage.setItem("favArr", JSON.stringify(favArr));
 })
 
+//Toggle GIF and Still image on click
 $(document).on('click', '.giphy', function() {
     let _gif = $(this).attr("data-gif")
     let _still = $(this).attr("data-image")
@@ -101,8 +106,13 @@ $(document).on('click', '.giphy', function() {
     }
 })
 
-$(document).on('click', '#fav', function() {
+//View Favorite GIFs
+$(document).on('click', '#fav', viewFav)
+
+function viewFav() {
     $('#gifCard').empty();
+    favArr = JSON.parse(localStorage.getItem("favArr"));
+    console.log(favArr)
     favArr.forEach(gif => { 
         $('#gifCard').append(`
         <div id="gif" class="card col-sm-6 col-md-4 col-lg-3 mt-2">
@@ -112,10 +122,25 @@ $(document).on('click', '#fav', function() {
                 <p class="card-text title">${gif.title}</p>
                 <p class="card-text rating">${gif.rating}</p>
                 </div>
+                <div class="col-sm-1 rmvFav">
+                <button type="button" data-toggle="tooltip" title="Remove from favorite" class="btn btn-secondary btn-sm">&times;</button>
+                </div>
             </div>
         </div>
         `
         )
     });
     $('#viewMore').hide()
+    $('[data-toggle="tooltip"]').tooltip()
+}
+
+//Remove from favorite function
+$(document).on('click', '.rmvFav', function() { 
+    $(this).children().tooltip('dispose')
+    let imageLink = $(this).parent().siblings().attr('data-image')
+    let rmvIndex = (favArr.map(function(gif) {return gif.imageLink }).indexOf(imageLink))
+    favArr.splice(rmvIndex, 1)
+    console.log(favArr)
+    localStorage.setItem("favArr", JSON.stringify(favArr));
+    viewFav()
 })

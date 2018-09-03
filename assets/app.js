@@ -12,9 +12,9 @@ $.ajax({
         <div id="gif" class="card col-sm-6 col-md-4 col-lg-3 mt-2">
             <img class="giphy card-img-top" data-image="${a[i].images.original_still.url}" data-gif="${a[i].images.original.url}" src="${a[i].images.original_still.url}" alt="Card image cap">
             <div class="row card-body">
-                <div class="col-sm-10">
-                <p class="card-text">Title: ${title[0].charAt(0).toUpperCase() + title[0].slice(1)}</p>
-                <p class="card-text">Rating: ${a[i].rating.toUpperCase()}</p>
+                <div class="tags col-sm-10">
+                <p class="card-text title">Title: ${title[0].charAt(0).toUpperCase() + title[0].slice(1)}</p>
+                <p class="card-text rating">Rating: ${a[i].rating.toUpperCase()}</p>
                 </div>
                 <div class="col-sm-1 addFav">
                 <button type="button" data-toggle="tooltip" title="Add to favorite" class="btn btn-secondary btn-sm">+</button>
@@ -78,9 +78,16 @@ $(document).on('click', '#viewMore', function() {
 })
 
 $(document).on('click', '.addFav', function() {
-    let favItem = $(this).parent().parent()[0].outerHTML
-    if (favArr.indexOf(favItem) === -1) {
-        favArr.push(favItem)
+    let favObj = {
+        imageLink: $(this).parent().siblings().attr('data-image'),
+        gifLink: $(this).parent().siblings().attr('data-gif'),
+        title: $(this).parent().children('.tags').children('.title').text(),
+        rating: $(this).parent().children('.tags').children('.rating').text()
+    }
+    if (favArr.map(function(gif) {
+        return gif.imageLink
+    }).indexOf(favObj.imageLink) == -1) {
+        favArr.push(favObj)
     }
 })
 
@@ -97,8 +104,18 @@ $(document).on('click', '.giphy', function() {
 $(document).on('click', '#fav', function() {
     $('#gifCard').empty();
     favArr.forEach(gif => { 
-        $('#gifCard').append(gif)
+        $('#gifCard').append(`
+        <div id="gif" class="card col-sm-6 col-md-4 col-lg-3 mt-2">
+            <img class="giphy card-img-top" data-image="${gif.imageLink}" data-gif="${gif.gifLink}" src="${gif.imageLink}" alt="Card image cap">
+            <div class="row card-body">
+                <div class="tags col-sm-10">
+                <p class="card-text title">${gif.title}</p>
+                <p class="card-text rating">${gif.rating}</p>
+                </div>
+            </div>
+        </div>
+        `
+        )
     });
-    $('.addFav').hide()
     $('#viewMore').hide()
 })

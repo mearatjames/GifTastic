@@ -112,7 +112,6 @@ $(document).on('click', '#fav', viewFav)
 function viewFav() {
     $('#gifCard').empty();
     favArr = JSON.parse(localStorage.getItem("favArr"));
-    console.log(favArr)
     favArr.forEach(gif => { 
         $('#gifCard').append(`
         <div id="gif" class="card col-sm-6 col-md-4 col-lg-3 mt-2">

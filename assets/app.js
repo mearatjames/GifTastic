@@ -81,6 +81,8 @@ $(document).on('click', '#viewMore', function() {
 
 //Add to favorite function
 $(document).on('click', '.addFav', function() {
+    $(this).children().tooltip('dispose');
+    $(this).html(`<i class="material-icons">done</i>`)
     let favObj = {
         imageLink: $(this).parent().siblings().attr('data-image'),
         gifLink: $(this).parent().siblings().attr('data-gif'),
@@ -91,9 +93,10 @@ $(document).on('click', '.addFav', function() {
         return gif.imageLink
     }).indexOf(favObj.imageLink) == -1) {
         favArr.push(favObj)
-    }
+    } 
     localStorage.setItem("favArr", JSON.stringify(favArr));
 })
+
 
 //Toggle GIF and Still image on click
 $(document).on('click', '.giphy', function() {

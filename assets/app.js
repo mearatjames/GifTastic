@@ -35,6 +35,7 @@ let favArr = [];
 $(function() {
     $('#viewMore').hide()
     $('[data-toggle="tooltip"]').tooltip()
+
 //Search and add function
 $('#searchAdd').on('click', function() {
     event.preventDefault();

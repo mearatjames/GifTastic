@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>GifTastic</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a href="#"><img src="assets/images/gif.png" alt="Logo"></a>
+        <span class="navbar-brand mr-auto" href="#">Tastic</span>
+        <a id="fav" class="nav-link ml-auto text-white" href="#">Favorites</a>
+        <form class="form-inline my-2 my-lg-0">
+            <input id="search" class="form-control mr-sm-2" type="search" placeholder="Search & Add" aria-label="Search">
+            <button id="searchAdd" class="btn btn-outline-success my-2 my-sm-0" type="submit">Submit</button>
+        </form>
+    </nav>
+    <div class="container-fluid">
+        <div id="btn" class="row justify-content-center">
+            <div class="gif col-sm-2 btn btn-secondary mr-1 mt-1">
+                    <div class="row align-items-center ">
+                        <div class="searchvalue col-8">Monday</div>
+                        <div class="col-2 closebtn">&times;</div>
+                    </div>
+            </div>
+            <div class="gif col-sm-2 btn btn-secondary mr-1 mt-1">
+                    <div class="row align-items-center">
+                        <div class="searchvalue col-8">Obama</div>
+                        <div class="col-2 closebtn">&times;</div>
+                    </div>
+            </div>
+            <div class="gif col-sm-2 btn btn-secondary mr-1 mt-1">
+                    <div class="row align-items-center">
+                        <div class="searchvalue col-8">Roadtrip</div>
+                        <div class="col-2 closebtn">&times;</div>
+                    </div>
+            </div>
+            <div class="gif col-sm-2 btn btn-secondary mr-1 mt-1">
+                    <div class="row align-items-center">
+                        <div class="searchvalue col-8">Office</div>
+                        <div class="col-2 closebtn">&times;</div>
+                    </div>
+            </div>
+            <div class="gif col-sm-2 btn btn-secondary mr-1 mt-1">
+                    <div class="row align-items-center">
+                        <div class="searchvalue col-8">Payday</div>
+                        <div class="col-2 closebtn">&times;</div>
+                    </div>
+            </div>
+            <div class="gif col-sm-2 btn btn-secondary mr-1 mt-1">
+                    <div class="row align-items-center">
+                        <div class="searchvalue col-8">Friday</div>
+                        <div class="col-2 closebtn">&times;</div>
+                    </div>
+            </div>
+        </div>
+        <div id="gifCard" class="row align-items-center justify-content-center mt-4"></div>
+        <div class="row align-items-center justify-content-center mt-4">
+            <button id="viewMore" type="button" class="btn btn-outline-dark">View More</button>
+        </div>
+        <div class="p-3"></div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="assets/app.js"></script>
+</body>
+</html>
